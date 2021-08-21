@@ -1,5 +1,6 @@
 language: java
 jdk: openjdk16
+dist: trusty
 sudo: required
 
 before_install: 
