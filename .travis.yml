@@ -1,8 +1,10 @@
 language: java
 jdk: openjdk16
+sudo: required
 
 before_install: 
 - cd library-backend-service
+- sudo chmod -R 755 /var/lib/mysql/
 -  mysql -e 'CREATE DATABASE IF NOT EXISTS library-db;' -u root --password=Hybris123
 
 install:
