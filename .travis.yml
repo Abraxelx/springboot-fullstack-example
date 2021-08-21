@@ -1,6 +1,8 @@
 language: java
 jdk: openjdk16
 
+before_script: cd /library-backend-service
+
 install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
