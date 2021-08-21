@@ -1,7 +1,9 @@
 language: java
 jdk: openjdk16
 
-before_install: cd library-backend-service
+before_install: 
+- cd library-backend-service
+-  mysql -e 'CREATE DATABASE IF NOT EXISTS library-db;' -u root --password=Hybris123
 
 install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
