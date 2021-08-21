@@ -1,7 +1,5 @@
 language: java
 jdk: openjdk16
 
-deploy:
-  provider: script
-  script: "mvn -B -V deploy"
-  skip_cleanup: true
+script:
+- ./mvnw clean install -B
