@@ -3,6 +3,9 @@ jdk: openjdk16
 dist: trusty
 sudo: required
 
+services:
+    - mysql
+
 before_install: 
 - cd library-backend-service
 - sudo chmod -R 755 /var/lib/mysql/
