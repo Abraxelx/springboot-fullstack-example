@@ -5,6 +5,3 @@ before_install: cd library-backend-service
 
 install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
-script:
-- ./mvnw clean install -B
