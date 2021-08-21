@@ -9,7 +9,7 @@ services:
 before_install: 
 - cd library-backend-service
 - sudo chmod -R 755 /var/lib/mysql/
--  mysql -e CREATE DATABASE IF NOT EXISTS library-db;
+- sudo mysql -e 'CREATE DATABASE IF NOT EXISTS library-db;'
 - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Hybris123') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
 
 install:
