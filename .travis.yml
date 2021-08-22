@@ -13,4 +13,4 @@ before_install:
 - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Hybris123') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
 
 install:
-- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- mvn install -DskipTests -Dmaven.javadoc.skip=true -B -V
