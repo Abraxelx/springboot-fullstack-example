@@ -2,13 +2,12 @@ package com.halilsahin.librarybackendservice.repository;
 
 import com.halilsahin.librarybackendservice.entity.Library;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
+@Repository
 public interface LibraryRepository extends JpaRepository<Library, Long> {
-     List<Library> findAll();
+
      Library findByTitleContains(String title);
-     Library update(Library library);
-     String deleteByISBN(String isbn);
-     void delete(Library library);
+     void deleteByISBN(String isbn);
 }

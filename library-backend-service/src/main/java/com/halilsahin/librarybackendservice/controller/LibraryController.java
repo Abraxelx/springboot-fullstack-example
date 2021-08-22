@@ -12,36 +12,38 @@ import java.util.List;
 public class LibraryController {
 
     @Autowired
-    LibraryService service;
+    LibraryService libraryService;
 
     @GetMapping(value = "/all")
     private List<Library> getAll(){
-        return service.findAll();
+        return libraryService.findAll();
     }
 
     @GetMapping(value ="/findbytitle")
     private Library getBook(@RequestParam String title){
-        return service.getBookByTitle(title);
+        return libraryService.getBookByTitle(title);
     }
 
     @PostMapping(value = "/save")
-    private Library saveNewBook(@RequestBody Library library){
-        return service.saveNewBook(library);
+    private void save(@RequestBody Library library){
+         libraryService.saveOrUpdate(library);
     }
 
     @PutMapping(value = "/update")
-    private Library updateBook(@RequestBody Library library){
-        return service.updateBook(library);
+    private void update(@RequestBody Library library){
+        libraryService.saveOrUpdate(library);
     }
+
 
     @DeleteMapping(value = "/deletebyisbn")
     private String deleteByIsbn(String isbn){
-        return service.deleteBookByISBN(isbn);
+        return libraryService.deleteBookByISBN(isbn);
     }
 
     @DeleteMapping(value = "/delete")
     private void delete(Library library){
-        service.delete(library);
+        libraryService.delete(library);
     }
+
 
 }
