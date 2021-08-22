@@ -43,8 +43,8 @@ public class LibraryServiceImpl implements LibraryService {
 
     @Override
     @Transactional
-    public void saveOrUpdate(Library library) {
-        libraryRepository.save(library);
+    public Library saveOrUpdate(Library library) {
+        return libraryRepository.save(library);
     }
 
 }

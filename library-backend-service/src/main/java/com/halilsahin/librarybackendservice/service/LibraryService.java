@@ -11,5 +11,5 @@ public interface LibraryService {
      Library getBookByTitle(String title);
      String deleteBookByISBN(String isbn);
      void delete(Library library);
-     void saveOrUpdate(Library library);
+     Library saveOrUpdate(Library library);
 }

@@ -3,6 +3,8 @@ package com.halilsahin.librarybackendservice.controller;
 import com.halilsahin.librarybackendservice.entity.Library;
 import com.halilsahin.librarybackendservice.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +17,9 @@ public class LibraryController {
     LibraryService libraryService;
 
     @GetMapping(value = "/all")
-    private List<Library> getAll(){
-        return libraryService.findAll();
+    private ResponseEntity<List<Library>> getAll(){
+        List<Library> books = libraryService.findAll();
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
     @GetMapping(value ="/findbytitle")
@@ -25,19 +28,22 @@ public class LibraryController {
     }
 
     @PostMapping(value = "/save")
-    private void save(@RequestBody Library library){
-         libraryService.saveOrUpdate(library);
+    private ResponseEntity<Library> save(@RequestBody Library library){
+        Library book = libraryService.saveOrUpdate(library);
+        return new ResponseEntity<>(book, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update")
-    private void update(@RequestBody Library library){
-        libraryService.saveOrUpdate(library);
+    private ResponseEntity<Library> update(@RequestBody Library library){
+        Library book = libraryService.saveOrUpdate(library);
+        return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
 
     @DeleteMapping(value = "/deletebyisbn")
-    private String deleteByIsbn(String isbn){
-        return libraryService.deleteBookByISBN(isbn);
+    private ResponseEntity<?> deleteByIsbn(String isbn){
+        libraryService.deleteBookByISBN(isbn);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/delete")
